@@ -8,17 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		741008392973462C0054A4D4 /* PQTDApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741008382973462C0054A4D4 /* PQTDApp.swift */; };
-		7410083B2973462C0054A4D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410083A2973462C0054A4D4 /* ContentView.swift */; };
 		7410083D2973462D0054A4D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7410083C2973462D0054A4D4 /* Assets.xcassets */; };
 		741008402973462D0054A4D4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7410083F2973462D0054A4D4 /* Preview Assets.xcassets */; };
+		7410084D297348260054A4D4 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410084C297348260054A4D4 /* ListRowView.swift */; };
+		7410084F29734A780054A4D4 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410084E29734A780054A4D4 /* AddTaskView.swift */; };
+		7410085229734F840054A4D4 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410085129734F840054A4D4 /* ItemModel.swift */; };
+		7410085629735D990054A4D4 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410085529735D990054A4D4 /* ListViewModel.swift */; };
+		7410085829735E250054A4D4 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410085729735E250054A4D4 /* ListView.swift */; };
+		7410085A29748FEA0054A4D4 /* IndexedPriorityQueueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410085929748FEA0054A4D4 /* IndexedPriorityQueueModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		741008352973462C0054A4D4 /* PQTD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PQTD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		741008382973462C0054A4D4 /* PQTDApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PQTDApp.swift; sourceTree = "<group>"; };
-		7410083A2973462C0054A4D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7410083C2973462D0054A4D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7410083F2973462D0054A4D4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7410084C297348260054A4D4 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
+		7410084E29734A780054A4D4 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		7410085129734F840054A4D4 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		7410085529735D990054A4D4 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		7410085729735E250054A4D4 /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListView.swift; path = ../../../../.Trash/ListView.swift; sourceTree = "<group>"; };
+		7410085929748FEA0054A4D4 /* IndexedPriorityQueueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexedPriorityQueueModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +62,10 @@
 			isa = PBXGroup;
 			children = (
 				741008382973462C0054A4D4 /* PQTDApp.swift */,
-				7410083A2973462C0054A4D4 /* ContentView.swift */,
+				7410085029734F710054A4D4 /* Models */,
+				74100847297346C00054A4D4 /* Views */,
 				7410083C2973462D0054A4D4 /* Assets.xcassets */,
+				7410085429735D690054A4D4 /* ViewModels */,
 				7410083E2973462D0054A4D4 /* Preview Content */,
 			);
 			path = PQTD;
@@ -65,6 +77,33 @@
 				7410083F2973462D0054A4D4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		74100847297346C00054A4D4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7410085729735E250054A4D4 /* ListView.swift */,
+				7410084C297348260054A4D4 /* ListRowView.swift */,
+				7410084E29734A780054A4D4 /* AddTaskView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7410085029734F710054A4D4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7410085129734F840054A4D4 /* ItemModel.swift */,
+				7410085929748FEA0054A4D4 /* IndexedPriorityQueueModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7410085429735D690054A4D4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7410085529735D990054A4D4 /* ListViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +176,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7410083B2973462C0054A4D4 /* ContentView.swift in Sources */,
+				7410085A29748FEA0054A4D4 /* IndexedPriorityQueueModel.swift in Sources */,
+				7410085629735D990054A4D4 /* ListViewModel.swift in Sources */,
+				7410085229734F840054A4D4 /* ItemModel.swift in Sources */,
+				7410085829735E250054A4D4 /* ListView.swift in Sources */,
+				7410084F29734A780054A4D4 /* AddTaskView.swift in Sources */,
 				741008392973462C0054A4D4 /* PQTDApp.swift in Sources */,
+				7410084D297348260054A4D4 /* ListRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
