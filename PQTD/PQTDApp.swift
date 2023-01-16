@@ -27,6 +27,7 @@ struct PQTDApp: App {
             NavigationView{
                 ListView()
             }
+            .navigationViewStyle(StackNavigationViewStyle())
             .environmentObject(listViewModel) // all views have access to environment objects
         }
     }

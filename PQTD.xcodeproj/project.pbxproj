@@ -16,6 +16,14 @@
 		7410085629735D990054A4D4 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410085529735D990054A4D4 /* ListViewModel.swift */; };
 		7410085829735E250054A4D4 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410085729735E250054A4D4 /* ListView.swift */; };
 		7410085A29748FEA0054A4D4 /* IndexedPriorityQueueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410085929748FEA0054A4D4 /* IndexedPriorityQueueModel.swift */; };
+		7410085C2974E0680054A4D4 /* NoItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410085B2974E0680054A4D4 /* NoItemsView.swift */; };
+		7410085E2974E9E50054A4D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7410085D2974E9E50054A4D4 /* LaunchScreen.storyboard */; };
+		741008602974ED2F0054A4D4 /* BottomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410085F2974ED2F0054A4D4 /* BottomTabView.swift */; };
+		741008622974F25A0054A4D4 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741008612974F25A0054A4D4 /* TimerView.swift */; };
+		741008642974F4430054A4D4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741008632974F4430054A4D4 /* SettingsView.swift */; };
+		741008662974F4860054A4D4 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741008652974F4860054A4D4 /* AddCategoryView.swift */; };
+		741008682974F4A30054A4D4 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741008672974F4A30054A4D4 /* CategoryModel.swift */; };
+		7410086A2974F6890054A4D4 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741008692974F6890054A4D4 /* CategoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +37,14 @@
 		7410085529735D990054A4D4 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		7410085729735E250054A4D4 /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListView.swift; path = ../../../../.Trash/ListView.swift; sourceTree = "<group>"; };
 		7410085929748FEA0054A4D4 /* IndexedPriorityQueueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexedPriorityQueueModel.swift; sourceTree = "<group>"; };
+		7410085B2974E0680054A4D4 /* NoItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoItemsView.swift; sourceTree = "<group>"; };
+		7410085D2974E9E50054A4D4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7410085F2974ED2F0054A4D4 /* BottomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabView.swift; sourceTree = "<group>"; };
+		741008612974F25A0054A4D4 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		741008632974F4430054A4D4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		741008652974F4860054A4D4 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
+		741008672974F4A30054A4D4 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		741008692974F6890054A4D4 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +101,12 @@
 				7410085729735E250054A4D4 /* ListView.swift */,
 				7410084C297348260054A4D4 /* ListRowView.swift */,
 				7410084E29734A780054A4D4 /* AddTaskView.swift */,
+				7410085B2974E0680054A4D4 /* NoItemsView.swift */,
+				7410085D2974E9E50054A4D4 /* LaunchScreen.storyboard */,
+				7410085F2974ED2F0054A4D4 /* BottomTabView.swift */,
+				741008612974F25A0054A4D4 /* TimerView.swift */,
+				741008632974F4430054A4D4 /* SettingsView.swift */,
+				741008652974F4860054A4D4 /* AddCategoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -94,6 +116,7 @@
 			children = (
 				7410085129734F840054A4D4 /* ItemModel.swift */,
 				7410085929748FEA0054A4D4 /* IndexedPriorityQueueModel.swift */,
+				741008672974F4A30054A4D4 /* CategoryModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -102,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				7410085529735D990054A4D4 /* ListViewModel.swift */,
+				741008692974F6890054A4D4 /* CategoryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -164,6 +188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7410085E2974E9E50054A4D4 /* LaunchScreen.storyboard in Resources */,
 				741008402973462D0054A4D4 /* Preview Assets.xcassets in Resources */,
 				7410083D2973462D0054A4D4 /* Assets.xcassets in Resources */,
 			);
@@ -176,13 +201,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7410086A2974F6890054A4D4 /* CategoryViewModel.swift in Sources */,
+				741008682974F4A30054A4D4 /* CategoryModel.swift in Sources */,
+				741008622974F25A0054A4D4 /* TimerView.swift in Sources */,
 				7410085A29748FEA0054A4D4 /* IndexedPriorityQueueModel.swift in Sources */,
 				7410085629735D990054A4D4 /* ListViewModel.swift in Sources */,
 				7410085229734F840054A4D4 /* ItemModel.swift in Sources */,
 				7410085829735E250054A4D4 /* ListView.swift in Sources */,
 				7410084F29734A780054A4D4 /* AddTaskView.swift in Sources */,
+				741008662974F4860054A4D4 /* AddCategoryView.swift in Sources */,
 				741008392973462C0054A4D4 /* PQTDApp.swift in Sources */,
+				7410085C2974E0680054A4D4 /* NoItemsView.swift in Sources */,
+				741008602974ED2F0054A4D4 /* BottomTabView.swift in Sources */,
 				7410084D297348260054A4D4 /* ListRowView.swift in Sources */,
+				741008642974F4430054A4D4 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +349,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -346,6 +379,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

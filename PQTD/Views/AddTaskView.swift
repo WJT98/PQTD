@@ -67,7 +67,6 @@ struct AddTaskView: View {
 }
 
 
-
 struct AddTaskView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{

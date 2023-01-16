@@ -11,6 +11,8 @@ struct ItemModel: Identifiable, Codable {
     let id: String
     var title: String
     var isCompleted: Bool
+    var remainingTime: Double
+    //var category: CategoryModel
 //    let priority: Int
 //    let dueDate: Date
     // let
@@ -19,6 +21,7 @@ struct ItemModel: Identifiable, Codable {
         self.id = id
         self.title = title
         self.isCompleted = isCompleted
+        self.remainingTime = 300
     }
     
     mutating func updateCompletion() -> Void {
