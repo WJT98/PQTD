@@ -20,13 +20,12 @@ import SwiftUI
 struct PQTDApp: App {
     
     // Property wrapper needed to view changes
+    // Initialize environment object here
     @StateObject var listViewModel: ListViewModel = ListViewModel()
     
     var body: some Scene {
         WindowGroup {
-            NavigationView{
-                ListView()
-            }
+            BottomTabView()
             .navigationViewStyle(StackNavigationViewStyle())
             .environmentObject(listViewModel) // all views have access to environment objects
         }

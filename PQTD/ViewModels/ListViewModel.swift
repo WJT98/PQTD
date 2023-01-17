@@ -30,10 +30,10 @@ class ListViewModel: ObservableObject {
     let itemsKey: String = "items_list"
     
     init() {
-        getItems()
+        getItemsFromAppStorage()
     }
     
-    func getItems() {
+    func getItemsFromAppStorage() {
         // guard let since data is optional (could be empty)
         guard
             let data = UserDefaults.standard.data(forKey: itemsKey),
@@ -57,12 +57,41 @@ class ListViewModel: ObservableObject {
         items.append(newItem)
     }
     
-    func updateItem(item: ItemModel) {
+    func updateItemCompletion(item: ItemModel) {
+    
         if let index = items.firstIndex(where: { $0.id == item.id}) {
+            objectWillChange.send()
             items[index].updateCompletion()
+            //items[index] = item.updateCompletion()
         }
     }
     
+    func getItem(itemID: String) -> ItemModel {
+        if let index = items.firstIndex(where: { $0.id == itemID}) {
+            return items[index]
+        }
+        return ItemModel(title: "Null Item")
+    }
+    
+    func decrementItemRemainingTime(item: ItemModel, time: Int) {
+        if let index = items.firstIndex(where: { $0.id == item.id}) {
+            items[index].decrementRemainingTime(time: time)
+        }
+    }
+    
+    func incrementItemElapsedTime(item: ItemModel, time: Int) {
+        if let index = items.firstIndex(where: { $0.id == item.id}) {
+            items[index].incrementElapsedTime(time: time)
+        }
+    }
+    
+    func getFirstItem() -> ItemModel {
+        if items.isEmpty {
+            addItem(title: "Item inserted by getfirstitem")
+        }
+        return items[0]
+    }
+        
     func saveItems() {
         if let encodedData = try? JSONEncoder().encode(items) {
             UserDefaults.standard.set(encodedData, forKey: itemsKey)

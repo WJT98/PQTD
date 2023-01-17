@@ -105,8 +105,8 @@
 				7410085D2974E9E50054A4D4 /* LaunchScreen.storyboard */,
 				7410085F2974ED2F0054A4D4 /* BottomTabView.swift */,
 				741008612974F25A0054A4D4 /* TimerView.swift */,
-				741008632974F4430054A4D4 /* SettingsView.swift */,
 				741008652974F4860054A4D4 /* AddCategoryView.swift */,
+				741008632974F4430054A4D4 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

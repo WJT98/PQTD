@@ -10,49 +10,80 @@ import SwiftUI
 struct AddTaskView: View {
     
     
-    @Environment(\.presentationMode) var presentationMode
+//    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
+
     @EnvironmentObject var listViewModel: ListViewModel
-    @State var textFieldText: String = ""
+    @State var textFieldTitle: String = ""
+    @State var textFieldPriority: Int = 0
     @State var alertTitle: String = ""
     @State var showAlert: Bool = false
+    @State private var category = "a"
     
     var body: some View {
-        ScrollView {
-            VStack {
-                HStack {
-                    TextField("Type something here...", text: $textFieldText)
-                        .padding(.horizontal)
-                        .frame(height: 55)
-                        .background(.white)
-                        .cornerRadius(10)
-                }
-                Button (action: saveButtonPressed, label: {
-                    Text("Save".uppercased())
-                        .foregroundColor(.white)
-                        .font(.headline)
-                        .frame(height:55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.accentColor)
-                        .cornerRadius(10)
-                })
+        Form {
+            Section(header: Text("Task")) {
+                TextField("Title", text: $textFieldTitle)
+                    .padding(.horizontal)
+                    .frame(height: 55)
+                    .cornerRadius(10)
+                    .disableAutocorrection(true)
+                TextField("Title", value: $textFieldPriority, formatter: NumberFormatter())
+                    .keyboardType(.numberPad)
+                    .padding(.horizontal)
+                    .frame(height: 55)
+                    .cornerRadius(10)
             }
-            .padding(5)
+ 
+            Section(header: Text("Category")) {
+                Picker("", selection: $category) {
+                    ForEach(["a", "b", "c"], id: \.self) {
+                        Text("\($0)")
+                    }
+                }
+                .padding(.horizontal)
+                .pickerStyle(.wheel)
+            }
         }
-        .navigationTitle("Add an Item")
+        .navigationBarTitle(Text("New Task"))
+        .navigationBarTitleDisplayMode(.inline)
         .alert(isPresented: $showAlert, content: getAlert)
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button("Add") {
+                    saveButtonPressed()
+                    dismiss()
+                }
+            }
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel", role: .cancel) {
+                    dismiss()
+                }
+            }
+        }
+            
+//            Button (action: saveButtonPressed, label: {
+//                Text("Save".uppercased())
+//                    .foregroundColor(.white)
+//                    .font(.headline)
+//                    .frame(height:55)
+//                    .frame(maxWidth: .infinity)
+//                    .background(Color.accentColor)
+//                    .cornerRadius(10)
+//            })
+        
     }
     
     func saveButtonPressed(){
         if textIsAppropriate() {
-            listViewModel.addItem(title: textFieldText)
-            presentationMode.wrappedValue.dismiss()
+            listViewModel.addItem(title: textFieldTitle)
+            //presentationMode.wrappedValue.dismiss()
+            dismiss()
         }
-        
-
     }
     
     func textIsAppropriate() -> Bool {
-        if textFieldText.count < 1 {
+        if textFieldTitle.count < 1 {
             alertTitle = "Your new todo item must be at least 1 character long"
             showAlert.toggle()
             return false

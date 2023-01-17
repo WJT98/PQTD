@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct BottomTabView: View {
+    // Property wrapper needed to view changes
+    @StateObject var listViewModel: ListViewModel = ListViewModel()
+    
     var body: some View {
         TabView {
             ListView()
                 .tabItem {
                     Label("Todo List", systemImage: "note")
                 }
-            Text("Timer")
+            TimerView()
                 .tabItem {
                     Label("Timer", systemImage: "timer")
                 }
@@ -23,6 +26,7 @@ struct BottomTabView: View {
                     Label("Settings", systemImage: "list.bullet")
                 }
         }
+        .navigationBarTitle(Text("TSDF"), displayMode: .inline)
     }
 }
 

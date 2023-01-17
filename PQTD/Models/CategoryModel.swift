@@ -10,15 +10,16 @@ import Foundation
 
 struct CategoryModel: Identifiable, Codable {
     let id: String
-    var title: String
+    var category: String
     var red: CGFloat
     var green: CGFloat
     var blue: CGFloat
     
-    init(id: String = UUID().uuidString, title: String,
+    
+    init(id: String = UUID().uuidString, category: String = "",
          red: CGFloat = 0.5, green: CGFloat = 0.5, blue: CGFloat = 0.5) {
         self.id = id
-        self.title = title
+        self.category = category
         self.red = red
         self.green = green
         self.blue = blue
