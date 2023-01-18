@@ -1,26 +1,26 @@
 //
-//  AddView.swift
+//  EditTaskView.swift
 //  PQTD
 //
-//  Created by William Tang on 2023-01-14.
+//  Created by William Tang on 2023-01-17.
 //
+
+import Foundation
 
 import SwiftUI
 
-struct AddTaskView: View {
+struct EditTaskView: View {
     
     
+//    @Environment(\.presentationMode) var presentationMode
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var listViewModel: IPQViewModel
-    @EnvironmentObject var categoryViewModel: CategoryViewModel
 
-    
+    @EnvironmentObject var listViewModel: IPQViewModel
     @State var textFieldTitle: String = ""
     @State var textFieldPriority: Int = 0
     @State var alertTitle: String = ""
     @State var showAlert: Bool = false
-    @State private var category: CategoryModel = .emptySelection
-    
+    @State private var category = "a"
     
     var body: some View {
         Form {
@@ -39,25 +39,20 @@ struct AddTaskView: View {
  
             Section(header: Text("Category")) {
                 Picker("", selection: $category) {
-                    ForEach(categoryViewModel.categories, id: \.self) { category in
-                        HStack{
-                            Image(systemName: category.icon)
-                            Text(category.title)
-                                .tag(category as CategoryModel?)
-                        }
-                        .foregroundColor(category.categoryColor)
+                    ForEach(["a", "b", "c"], id: \.self) {
+                        Text("\($0)")
                     }
                 }
                 .padding(.horizontal)
                 .pickerStyle(.wheel)
             }
         }
-        .navigationBarTitle(Text("New Task"))
+        .navigationBarTitle(Text("Edit Task"))
         .navigationBarTitleDisplayMode(.inline)
         .alert(isPresented: $showAlert, content: getAlert)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Button("Add") {
+                Button("Edit") {
                     saveButtonPressed()
                     dismiss()
                 }
@@ -68,11 +63,23 @@ struct AddTaskView: View {
                 }
             }
         }
+            
+//            Button (action: saveButtonPressed, label: {
+//                Text("Save".uppercased())
+//                    .foregroundColor(.white)
+//                    .font(.headline)
+//                    .frame(height:55)
+//                    .frame(maxWidth: .infinity)
+//                    .background(Color.accentColor)
+//                    .cornerRadius(10)
+//            })
+        
     }
     
     func saveButtonPressed(){
         if textIsAppropriate() {
-            listViewModel.addItem(title: textFieldTitle, categoryID: category.id)
+            //listViewModel.addItem(title: textFieldTitle)
+            //presentationMode.wrappedValue.dismiss()
             dismiss()
         }
     }
@@ -93,12 +100,11 @@ struct AddTaskView: View {
 }
 
 
-struct AddTaskView_Previews: PreviewProvider {
+struct EditTaskView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
             AddTaskView()
         }
         .environmentObject(IPQViewModel())
-        .environmentObject(CategoryViewModel())
     }
 }

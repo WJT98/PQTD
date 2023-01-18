@@ -8,26 +8,28 @@
 import Foundation
 
 class ItemModel: Identifiable, Codable, Hashable {
-
+    
+    //time is stored in seconds
     
     let id: String
     var title: String
     var isCompleted: Bool
     var remainingTime: Int
     var elapsedTime: Int
-    var category: CategoryModel
-//    let priority: Int
-//    let dueDate: Date
-    // let
+    var categoryID: String
+    let priority: Int
+    let dueDate: Date?
     
     init(id: String = UUID().uuidString, title: String,
-         isCompleted: Bool = false, remainingTime: Int = 300, category: CategoryModel = CategoryModel()) {
+         isCompleted: Bool = false, remainingTime: Int = 300, elapsedTime: Int = 0, categoryID: String = "heart.fill", priority: Int = 1, dueDate: Date? = nil) {
         self.id = id
         self.title = title
         self.isCompleted = isCompleted
         self.remainingTime = remainingTime
-        self.elapsedTime = 0
-        self.category = category
+        self.elapsedTime = elapsedTime
+        self.categoryID = categoryID
+        self.priority = priority
+        self.dueDate = dueDate
     }
     
     func updateCompletion() -> Void {
@@ -43,6 +45,17 @@ class ItemModel: Identifiable, Codable, Hashable {
         self.elapsedTime += time
     }
     
+    func getFormattedTime(totalSeconds: Int) -> String {
+        let hours = totalSeconds / 3600
+        let minutes = (totalSeconds % 3600) / 60
+        let seconds = (totalSeconds % 3600) % 60
+        
+        if hours < 1 {
+            return String(format: "%02d:%02d", minutes, seconds)
+        } else {
+            return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+        }
+    }
     
     func addTime(time: Int) -> Void {
         self.remainingTime += time

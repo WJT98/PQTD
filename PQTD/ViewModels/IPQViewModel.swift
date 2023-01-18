@@ -1,5 +1,5 @@
 //
-//  ListViewModel.swift
+//  IPQViewModel.swift
 //  PQTD
 //
 //  Created by William Tang on 2023-01-14.
@@ -8,16 +8,18 @@
 import Foundation
 
 /*
- CRUD Functions stored here
+ CRUD Functions stored in ViewModels
  
  Create
  Read
  Update
  Delete
  
+ Implementation of Indexed Priority Queue
+ 
  */
 
-class ListViewModel: ObservableObject {
+class IPQViewModel: ObservableObject {
     
     //Use @published instead of @state inside a class
     
@@ -52,8 +54,8 @@ class ListViewModel: ObservableObject {
         items.move(fromOffsets: from, toOffset: to)
     }
     
-    func addItem(title: String) {
-        let newItem = ItemModel(title: title, isCompleted: false)
+    func addItem(title: String, categoryID: String) {
+        let newItem = ItemModel(title: title, categoryID: categoryID)
         items.append(newItem)
     }
     
@@ -74,6 +76,7 @@ class ListViewModel: ObservableObject {
     }
     
     func decrementItemRemainingTime(item: ItemModel, time: Int) {
+        objectWillChange.send()
         if let index = items.firstIndex(where: { $0.id == item.id}) {
             items[index].decrementRemainingTime(time: time)
         }
@@ -87,7 +90,7 @@ class ListViewModel: ObservableObject {
     
     func getFirstItem() -> ItemModel {
         if items.isEmpty {
-            addItem(title: "Item inserted by getfirstitem")
+            addItem(title: "Item inserted by getfirstitem", categoryID: "null")
         }
         return items[0]
     }

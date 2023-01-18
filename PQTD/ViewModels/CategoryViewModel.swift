@@ -6,15 +6,17 @@
 //
 
 import Foundation
+import SwiftUI
 
 class CategoryViewModel: ObservableObject {
+    
     @Published var categories: [CategoryModel] = [] {
         didSet {
             saveCategories()
         }
     }
     
-    let categoriesKey: String = "categorieslist"
+    let categoriesKey: String = "categories_list"
 
     init() {
         getCategories()
@@ -24,14 +26,12 @@ class CategoryViewModel: ObservableObject {
         // guard let since data is optional (could be empty)
         guard
             let data = UserDefaults.standard.data(forKey: categoriesKey),
-            let savedCategories = try? JSONDecoder().decode( [CategoryModel].self, from: data)
+            let savedCategories = try? JSONDecoder().decode([CategoryModel].self, from: data)
         else {
             return
         }
         self.categories = savedCategories
     }
-    
-    
     
     func saveCategories() {
         if let encodedData = try? JSONEncoder().encode(categories) {
@@ -39,7 +39,37 @@ class CategoryViewModel: ObservableObject {
         }
     }
     
-    //let color = UIColor(red: 0.8, green: 0.1, blue: 0.5, alpha: 1)
-    // set max categories
+    func deleteCategory(indexSet: IndexSet) {
+        categories.remove(atOffsets: indexSet)
+    }
+    
+    func moveCategory(from: IndexSet, to: Int) {
+        categories.move(fromOffsets: from, toOffset: to)
+    }
+    
+    func incrementTotalTasks(categoryID: String, count: Int){
+        if let index = categories.firstIndex(where: { $0.id == categoryID}) {
+            return categories[index].incrementTotalTasks(count: count)
+        }
+    }
+    func incrementCompletedTasks(categoryID: String, count: Int){
+        if let index = categories.firstIndex(where: { $0.id == categoryID}) {
+            return categories[index].incrementCompletedTasks(count: count)
+        }
+    }
+    
+    func getCategory(categoryID: String) -> CategoryModel {
+        if let index = categories.firstIndex(where: { $0.id == categoryID}) {
+            return categories[index]
+        }
+        return CategoryModel(title: "Null Category")
+    }
+    
+    func addCategory(title: String, categoryColor: Color, icon: String) {
+        let newCategory = CategoryModel(title: title,
+                                        categoryColor: categoryColor,
+                                        icon: icon)
+        categories.append(newCategory)
+    }
 
 }

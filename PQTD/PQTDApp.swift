@@ -21,13 +21,16 @@ struct PQTDApp: App {
     
     // Property wrapper needed to view changes
     // Initialize environment object here
-    @StateObject var listViewModel: ListViewModel = ListViewModel()
+    @StateObject var listViewModel: IPQViewModel = IPQViewModel()
+    @StateObject var categoryViewModel: CategoryViewModel = CategoryViewModel()
+
     
     var body: some Scene {
         WindowGroup {
             BottomTabView()
             .navigationViewStyle(StackNavigationViewStyle())
             .environmentObject(listViewModel) // all views have access to environment objects
+            .environmentObject(categoryViewModel)
         }
     }
 }

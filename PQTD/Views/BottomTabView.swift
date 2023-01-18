@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BottomTabView: View {
     // Property wrapper needed to view changes
-    @StateObject var listViewModel: ListViewModel = ListViewModel()
+    @StateObject var listViewModel: IPQViewModel = IPQViewModel()
     
     var body: some View {
         TabView {
@@ -21,7 +21,7 @@ struct BottomTabView: View {
                 .tabItem {
                     Label("Timer", systemImage: "timer")
                 }
-            Text("Settings")
+            SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "list.bullet")
                 }
@@ -33,6 +33,6 @@ struct BottomTabView: View {
 struct BottomTabViewPreviews: PreviewProvider {
     static var previews: some View {
         BottomTabView()
-            .environmentObject(ListViewModel())
+            .environmentObject(IPQViewModel())
     }
 }
