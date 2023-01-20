@@ -27,6 +27,13 @@
 		74A8732A297749A200471FB2 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A87329297749A200471FB2 /* EditTaskView.swift */; };
 		74A8732C29777E1E00471FB2 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A8732B29777E1E00471FB2 /* CategoriesView.swift */; };
 		74A8732E297790F600471FB2 /* CategoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A8732D297790F600471FB2 /* CategoryCardView.swift */; };
+		74A87330297868BF00471FB2 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A8732F297868BF00471FB2 /* FloatingButton.swift */; };
+		74DFFE8A2979BEAF00782A48 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 74DFFE892979BEAF00782A48 /* ConfettiSwiftUI */; };
+		74DFFE8C2979C78C00782A48 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DFFE8B2979C78C00782A48 /* TimePickerView.swift */; };
+		74DFFE8E2979D51000782A48 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DFFE8D2979D51000782A48 /* StatsView.swift */; };
+		74DFFE902979DB0A00782A48 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DFFE8F2979DB0A00782A48 /* TagsView.swift */; };
+		74DFFE922979DE4D00782A48 /* TagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DFFE912979DE4D00782A48 /* TagsViewModel.swift */; };
+		74DFFE942979E48900782A48 /* TagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DFFE932979E48900782A48 /* TagModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +58,12 @@
 		74A87329297749A200471FB2 /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
 		74A8732B29777E1E00471FB2 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		74A8732D297790F600471FB2 /* CategoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCardView.swift; sourceTree = "<group>"; };
+		74A8732F297868BF00471FB2 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
+		74DFFE8B2979C78C00782A48 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
+		74DFFE8D2979D51000782A48 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		74DFFE8F2979DB0A00782A48 /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
+		74DFFE912979DE4D00782A48 /* TagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsViewModel.swift; sourceTree = "<group>"; };
+		74DFFE932979E48900782A48 /* TagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74DFFE8A2979BEAF00782A48 /* ConfettiSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +120,7 @@
 			children = (
 				7410085729735E250054A4D4 /* ListView.swift */,
 				7410084C297348260054A4D4 /* ListRowView.swift */,
+				74A8732F297868BF00471FB2 /* FloatingButton.swift */,
 				7410084E29734A780054A4D4 /* AddTaskView.swift */,
 				74A87329297749A200471FB2 /* EditTaskView.swift */,
 				7410085B2974E0680054A4D4 /* NoItemsView.swift */,
@@ -116,6 +131,9 @@
 				741008632974F4430054A4D4 /* SettingsView.swift */,
 				74A8732B29777E1E00471FB2 /* CategoriesView.swift */,
 				74A8732D297790F600471FB2 /* CategoryCardView.swift */,
+				74DFFE8B2979C78C00782A48 /* TimePickerView.swift */,
+				74DFFE8D2979D51000782A48 /* StatsView.swift */,
+				74DFFE8F2979DB0A00782A48 /* TagsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -126,6 +144,7 @@
 				7410085129734F840054A4D4 /* ItemModel.swift */,
 				741008672974F4A30054A4D4 /* CategoryModel.swift */,
 				74A8732729773BC900471FB2 /* CodableColor.swift */,
+				74DFFE932979E48900782A48 /* TagModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -135,6 +154,7 @@
 			children = (
 				7410085529735D990054A4D4 /* IPQViewModel.swift */,
 				741008692974F6890054A4D4 /* CategoryViewModel.swift */,
+				74DFFE912979DE4D00782A48 /* TagsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -155,6 +175,9 @@
 			dependencies = (
 			);
 			name = PQTD;
+			packageProductDependencies = (
+				74DFFE892979BEAF00782A48 /* ConfettiSwiftUI */,
+			);
 			productName = PQTD;
 			productReference = 741008352973462C0054A4D4 /* PQTD.app */;
 			productType = "com.apple.product-type.application";
@@ -183,6 +206,9 @@
 				Base,
 			);
 			mainGroup = 7410082C2973462C0054A4D4;
+			packageReferences = (
+				74DFFE882979BEAF00782A48 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+			);
 			productRefGroup = 741008362973462C0054A4D4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -212,18 +238,24 @@
 			files = (
 				7410086A2974F6890054A4D4 /* CategoryViewModel.swift in Sources */,
 				74A8732A297749A200471FB2 /* EditTaskView.swift in Sources */,
+				74DFFE902979DB0A00782A48 /* TagsView.swift in Sources */,
 				741008682974F4A30054A4D4 /* CategoryModel.swift in Sources */,
+				74DFFE8C2979C78C00782A48 /* TimePickerView.swift in Sources */,
 				741008622974F25A0054A4D4 /* TimerView.swift in Sources */,
+				74A87330297868BF00471FB2 /* FloatingButton.swift in Sources */,
 				74A8732E297790F600471FB2 /* CategoryCardView.swift in Sources */,
 				7410085629735D990054A4D4 /* IPQViewModel.swift in Sources */,
 				74A8732C29777E1E00471FB2 /* CategoriesView.swift in Sources */,
 				7410085229734F840054A4D4 /* ItemModel.swift in Sources */,
+				74DFFE942979E48900782A48 /* TagModel.swift in Sources */,
 				7410085829735E250054A4D4 /* ListView.swift in Sources */,
 				7410084F29734A780054A4D4 /* AddTaskView.swift in Sources */,
 				741008662974F4860054A4D4 /* AddCategoryView.swift in Sources */,
 				741008392973462C0054A4D4 /* PQTDApp.swift in Sources */,
+				74DFFE922979DE4D00782A48 /* TagsViewModel.swift in Sources */,
 				7410085C2974E0680054A4D4 /* NoItemsView.swift in Sources */,
 				741008602974ED2F0054A4D4 /* BottomTabView.swift in Sources */,
+				74DFFE8E2979D51000782A48 /* StatsView.swift in Sources */,
 				7410084D297348260054A4D4 /* ListRowView.swift in Sources */,
 				741008642974F4430054A4D4 /* SettingsView.swift in Sources */,
 				74A8732829773BC900471FB2 /* CodableColor.swift in Sources */,
@@ -429,6 +461,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		74DFFE882979BEAF00782A48 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WJT98/ConfettiSwiftUI";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		74DFFE892979BEAF00782A48 /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 74DFFE882979BEAF00782A48 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7410082D2973462C0054A4D4 /* Project object */;
 }

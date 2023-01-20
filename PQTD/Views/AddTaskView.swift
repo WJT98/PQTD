@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct AddTaskView: View {
     
@@ -13,31 +14,41 @@ struct AddTaskView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var listViewModel: IPQViewModel
     @EnvironmentObject var categoryViewModel: CategoryViewModel
+    @EnvironmentObject var tagsViewModel: TagsViewModel
 
     
     @State var textFieldTitle: String = ""
-    @State var textFieldPriority: Int = 0
+    @State var textFieldPriority: String = ""
     @State var alertTitle: String = ""
     @State var showAlert: Bool = false
+    @State var hours: Int = 0
+    @State var minutes: Int = 0
+    @State var seconds: Int = 0
+    @State var textFieldTag: String = ""
     @State private var category: CategoryModel = .emptySelection
     
     
     var body: some View {
         Form {
             Section(header: Text("Task")) {
-                TextField("Title", text: $textFieldTitle)
+                TextField("Task Name", text: $textFieldTitle)
                     .padding(.horizontal)
                     .frame(height: 55)
                     .cornerRadius(10)
                     .disableAutocorrection(true)
-                TextField("Title", value: $textFieldPriority, formatter: NumberFormatter())
+                TextField("Priority", text: $textFieldPriority)
                     .keyboardType(.numberPad)
                     .padding(.horizontal)
                     .frame(height: 55)
                     .cornerRadius(10)
-            }
- 
-            Section(header: Text("Category")) {
+                    .onReceive(Just(textFieldPriority)) { newValue in
+                        print(textFieldTitle)
+                        let filtered = newValue.filter { Set("0123456789").contains($0) }
+                        if filtered != newValue {
+                            self.textFieldPriority = filtered
+                        }
+                    }
+                
                 Picker("", selection: $category) {
                     ForEach(categoryViewModel.categories, id: \.self) { category in
                         HStack{
@@ -49,8 +60,41 @@ struct AddTaskView: View {
                     }
                 }
                 .padding(.horizontal)
-                .pickerStyle(.wheel)
+                .frame(maxHeight: 100)
+                .pickerStyle(WheelPickerStyle())
+                
+                HStack {
+                    Picker("", selection: $hours){
+                        ForEach(0..<4, id: \.self) { i in
+                            Text("\(i) h").tag(i)
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    Picker("", selection: $minutes){
+                        ForEach(0..<60, id: \.self) { i in
+                            Text("\(i) min").tag(i)
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    Picker("", selection: $seconds){
+                        ForEach([0,2,10, 30, 45], id: \.self) { i in
+                            Text("\(i) sec").tag(i)
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                }
+                .padding(.horizontal)
+                .frame(maxHeight: 150)
             }
+            Section(header: Text("Tags")){
+                TagsView()
+                    .padding(.vertical, 10)
+                TextField("Add New Tag...", text: $textFieldTag)
+                    .onSubmit {
+                        
+                    }
+            }
+            
         }
         .navigationBarTitle(Text("New Task"))
         .navigationBarTitleDisplayMode(.inline)
@@ -68,11 +112,16 @@ struct AddTaskView: View {
                 }
             }
         }
+        .onAppear(perform: {
+            self.category = categoryViewModel.getFirstCategory()
+        })
     }
     
     func saveButtonPressed(){
         if textIsAppropriate() {
-            listViewModel.addItem(title: textFieldTitle, categoryID: category.id)
+            let totalSeconds: Int = seconds + 60*minutes + 3600*hours
+            listViewModel.addItem(title: textFieldTitle, categoryID: category.id, priority: Int(textFieldPriority)!, remainingTime: totalSeconds)
+            categoryViewModel.incrementTotalTasks(categoryID: category.id, count: 1)
             dismiss()
         }
     }
@@ -100,5 +149,6 @@ struct AddTaskView_Previews: PreviewProvider {
         }
         .environmentObject(IPQViewModel())
         .environmentObject(CategoryViewModel())
+        .environmentObject(TagsViewModel())
     }
 }

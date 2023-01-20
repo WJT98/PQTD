@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import ConfettiSwiftUI
+
 import UserNotifications
 
 //LinearGradient(gradient: Gradient(colors: [Color.accentColor, Color("TimerColor")])
@@ -20,12 +22,13 @@ struct TimerView: View {
     @State var nextItemID: String = "1"
     @State var counter: Int = 0
     @State var timerRunning: Bool = false
+    @State var confettiOn: Int = 0
+    @State var remainingTime: Int = 0
 
     
     let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        NavigationView {
             VStack (alignment: .leading){
                 //Timer Stack
                 ZStack {
@@ -43,10 +46,13 @@ struct TimerView: View {
                         .frame(width: 170, height: 170)
                     
                     Circle()
-                        .trim(from: 0, to: CGFloat(counter)/CGFloat(listViewModel.getItem(itemID: curItemID).remainingTime))
+                        .trim(from: 0, to: CGFloat(counter)/CGFloat(listViewModel.getItem(itemID: curItemID).remainingTime + counter))
                         .stroke(Color.accentColor, style: StrokeStyle(lineWidth: 14, lineCap: .round))
                         .frame(width: 200, height: 200)
+                        .transition(AnyTransition.opacity
+                            .animation(.easeIn))
                         .rotationEffect(.degrees(-90))
+
                     
                     
                     Image(systemName: timerRunning ? "pause.fill" : "play.fill")
@@ -54,6 +60,7 @@ struct TimerView: View {
                         .onTapGesture {
                             self.timerRunning.toggle()
                         }
+
                     VStack{
                         HStack {
                             VStack {
@@ -78,6 +85,9 @@ struct TimerView: View {
                                     self.timerRunning = false
                                     listViewModel.getItem(itemID: curItemID).decrementRemainingTime(time: -counter)
                                     listViewModel.getItem(itemID: curItemID).incrementElapsedTime(time: -counter)
+                                    if self.counter ==  self.remainingTime {
+                                        categoryViewModel.incrementCompletedTasks(categoryID: listViewModel.getItem(itemID: self.curItemID).categoryID, count: -1)
+                                    }
                                     self.counter = 0
                                     
                                 }
@@ -102,7 +112,7 @@ struct TimerView: View {
                     .padding(.horizontal)
                     .padding(.top)
 
-               
+                
                 ListRowView(item: listViewModel.getItem(itemID:curItemID),
                             category: categoryViewModel.getCategory(categoryID: listViewModel.getItem(itemID:curItemID).categoryID))
     
@@ -120,22 +130,28 @@ struct TimerView: View {
             }
             .onAppear(perform: {
                 self.curItemID = listViewModel.getFirstItem().id
+                self.remainingTime = listViewModel.getItem(itemID:curItemID).remainingTime
                // self.nextItemID = 0
             })
             .onReceive(timer, perform: { value in
-                if listViewModel.getItem(itemID:curItemID).isCompleted {
+                if self.counter ==  self.remainingTime {
                     timer.upstream.connect().cancel()
                     self.timerRunning = false
+                    self.confettiOn = 1
+                    categoryViewModel.incrementCompletedTasks(categoryID: listViewModel.getItem(itemID: self.curItemID).categoryID, count: 1)
                 }
                 if timerRunning {
                     self.counter += 1
                     updateItemModelTime(itemID: curItemID)
+
                 }
             })
             .navigationTitle(Text("Timer"))
             .background(Color.black.opacity(0.03))
+            .confettiCannon(counter: $confettiOn, num:1, confettiSize: 15, repetitions: 100, repetitionInterval: 0.1)
+
         }
-    }
+    
     
     func updateItemModelTime(itemID: String) {
         listViewModel.decrementItemRemainingTime(

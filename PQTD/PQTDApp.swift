@@ -23,14 +23,15 @@ struct PQTDApp: App {
     // Initialize environment object here
     @StateObject var listViewModel: IPQViewModel = IPQViewModel()
     @StateObject var categoryViewModel: CategoryViewModel = CategoryViewModel()
+    @StateObject var tagsViewModel: TagsViewModel = TagsViewModel()
 
     
     var body: some Scene {
         WindowGroup {
-            BottomTabView()
-            .navigationViewStyle(StackNavigationViewStyle())
-            .environmentObject(listViewModel) // all views have access to environment objects
-            .environmentObject(categoryViewModel)
+                BottomTabView()
+                .environmentObject(listViewModel) // all views have access to environment objects
+                .environmentObject(categoryViewModel)
+                .environmentObject(tagsViewModel)
         }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 /*
  CRUD Functions stored in ViewModels
@@ -28,6 +29,12 @@ class IPQViewModel: ObservableObject {
             saveItems()
         }
     }
+    
+//    @Published var tags: [String] = [] {
+//        didSet {
+//            saveTags()
+//        }
+//    }
     
     let itemsKey: String = "items_list"
     
@@ -54,11 +61,14 @@ class IPQViewModel: ObservableObject {
         items.move(fromOffsets: from, toOffset: to)
     }
     
-    func addItem(title: String, categoryID: String) {
-        let newItem = ItemModel(title: title, categoryID: categoryID)
+    func addItem(title: String, categoryID: String, priority: Int = 1, remainingTime: Int = 2) {
+        let newItem = ItemModel(title: title,
+                                remainingTime: remainingTime,
+                                categoryID: categoryID,
+                                priority: priority)
         items.append(newItem)
     }
-    
+
     func updateItemCompletion(item: ItemModel) {
     
         if let index = items.firstIndex(where: { $0.id == item.id}) {
@@ -76,7 +86,6 @@ class IPQViewModel: ObservableObject {
     }
     
     func decrementItemRemainingTime(item: ItemModel, time: Int) {
-        objectWillChange.send()
         if let index = items.firstIndex(where: { $0.id == item.id}) {
             items[index].decrementRemainingTime(time: time)
         }
@@ -93,6 +102,39 @@ class IPQViewModel: ObservableObject {
             addItem(title: "Item inserted by getfirstitem", categoryID: "null")
         }
         return items[0]
+    }
+    
+    func getIncompleteItems() -> [ItemModel]{
+        var result: [ItemModel] = []
+        for item in items {
+            if !item.isCompleted {
+                result.append(item)
+            }
+        }
+        return result
+    }
+    
+    func getSelectedItems(selectedTags: Set<String>, ignoreTags: Set<String>) -> [ItemModel] {
+        var result: [ItemModel] = []
+        var selected: Bool = false
+        var ignore: Bool = false
+        for item in items {
+            for itemTag in item.tags {
+                if ignoreTags.contains(itemTag){
+                    ignore = true
+                    break
+                } else if selectedTags.contains(itemTag) {
+                    selected = true
+                }
+            }
+            if !ignore && selected {
+                result.append(item)
+            }
+            ignore = false
+            selected = false
+        }
+        return result
+        
     }
         
     func saveItems() {

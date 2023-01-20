@@ -26,7 +26,6 @@ struct BottomTabView: View {
                     Label("Settings", systemImage: "list.bullet")
                 }
         }
-        .navigationBarTitle(Text("TSDF"), displayMode: .inline)
     }
 }
 

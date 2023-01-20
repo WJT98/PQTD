@@ -49,14 +49,23 @@ class CategoryViewModel: ObservableObject {
     
     func incrementTotalTasks(categoryID: String, count: Int){
         if let index = categories.firstIndex(where: { $0.id == categoryID}) {
-            return categories[index].incrementTotalTasks(count: count)
+            categories[index].incrementTotalTasks(count: count)
         }
     }
     func incrementCompletedTasks(categoryID: String, count: Int){
         if let index = categories.firstIndex(where: { $0.id == categoryID}) {
-            return categories[index].incrementCompletedTasks(count: count)
+            categories[index].incrementCompletedTasks(count: count)
         }
     }
+    
+    func getTasksStatistics(categoryID:String) -> (Int,Int) {
+        if let index = categories.firstIndex(where: { $0.id == categoryID}) {
+            return (categories[index].completedTasks, categories[index].totalTasks)
+        }
+        return (0,0)
+    }
+    
+    
     
     func getCategory(categoryID: String) -> CategoryModel {
         if let index = categories.firstIndex(where: { $0.id == categoryID}) {
@@ -70,6 +79,13 @@ class CategoryViewModel: ObservableObject {
                                         categoryColor: categoryColor,
                                         icon: icon)
         categories.append(newCategory)
+    }
+    
+    func getFirstCategory() -> CategoryModel {
+        if categories.isEmpty {
+            addCategory(title: "Default Category", categoryColor: Color.accentColor, icon: "heart.fill")
+        }
+        return categories[0]
     }
 
 }

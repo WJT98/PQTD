@@ -19,9 +19,10 @@ class ItemModel: Identifiable, Codable, Hashable {
     var categoryID: String
     let priority: Int
     let dueDate: Date?
+    var tags: Set<String> = Set<String>()
     
     init(id: String = UUID().uuidString, title: String,
-         isCompleted: Bool = false, remainingTime: Int = 300, elapsedTime: Int = 0, categoryID: String = "heart.fill", priority: Int = 1, dueDate: Date? = nil) {
+         isCompleted: Bool = false, remainingTime: Int = 300, elapsedTime: Int = 0, categoryID: String = "heart.fill", priority: Int = 1, dueDate: Date? = nil, tags: [String] = []) {
         self.id = id
         self.title = title
         self.isCompleted = isCompleted
@@ -30,6 +31,9 @@ class ItemModel: Identifiable, Codable, Hashable {
         self.categoryID = categoryID
         self.priority = priority
         self.dueDate = dueDate
+        for tag in tags {
+            self.tags.insert(tag)
+        }
     }
     
     func updateCompletion() -> Void {
@@ -38,7 +42,13 @@ class ItemModel: Identifiable, Codable, Hashable {
     }
     
     func decrementRemainingTime(time: Int) -> Void {
-        self.remainingTime -= time
+        if time < 0 || remainingTime > 1 {
+            self.remainingTime -= time
+            self.isCompleted = false
+        } else {
+            self.remainingTime = 0
+            self.isCompleted = true
+        }
     }
     
     func incrementElapsedTime(time: Int) -> Void {
