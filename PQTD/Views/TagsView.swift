@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import WrappingHStack
+
 
 
 struct TagsView: View {
@@ -13,14 +15,13 @@ struct TagsView: View {
     @State private var showAlert: Bool = false
     @State private var tagTitle: String = ""
     @State private var alertTitle: String = ""
-
+    
     var body: some View {
-        HStack{
-            ForEach(tagsViewModel.getKeys(), id: \.self){ tag in
+            WrappingHStack(tagsViewModel.getKeys(), id: \.self){ tag in
                 Button(action: {}) {
                     Text(tag)
                         .strikethrough(tagsViewModel.getTagStatus(key: tag) == .ignore ? true : false)
-                        .frame(minWidth: 30)
+                        .frame(minWidth: 20)
                 }
                 .highPriorityGesture(
                     TapGesture()
@@ -48,12 +49,11 @@ struct TagsView: View {
                 .buttonStyle(.borderedProminent)
                 .tint(tagsViewModel.getTagStatus(key: tag) == .unselected ? Color.gray : (tagsViewModel.getTagStatus(key: tag) == .selected ? Color.accentColor : Color("SecondaryAccentColor")))
                 .controlSize(.regular)
-                .cornerRadius(20)
-
+                .padding(.vertical, 5)
+                .cornerRadius(10)
             }
-        }
-
     }
+    
     
     func renameTag(key: String, newKey: String){
         if tagTitle.count > 1 {

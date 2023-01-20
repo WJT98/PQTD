@@ -87,11 +87,15 @@ struct AddTaskView: View {
                 .frame(maxHeight: 150)
             }
             Section(header: Text("Tags")){
-                TagsView()
+                AddTaskTagsView()
                     .padding(.vertical, 10)
                 TextField("Add New Tag...", text: $textFieldTag)
+                    .disableAutocorrection(true)
                     .onSubmit {
-                        
+                        if textFieldTag.count > 1{
+                            tagsViewModel.addTag(key: textFieldTag)
+                            textFieldTag = ""
+                        }
                     }
             }
             
@@ -118,9 +122,13 @@ struct AddTaskView: View {
     }
     
     func saveButtonPressed(){
+        if textFieldPriority == ""{
+            textFieldPriority = "1"
+        }
         if textIsAppropriate() {
             let totalSeconds: Int = seconds + 60*minutes + 3600*hours
-            listViewModel.addItem(title: textFieldTitle, categoryID: category.id, priority: Int(textFieldPriority)!, remainingTime: totalSeconds)
+            listViewModel.addItem(title: textFieldTitle, categoryID: category.id, priority: Int(textFieldPriority)!, remainingTime: totalSeconds, tags: tagsViewModel.getNewTaskTags())
+            tagsViewModel.clearNewTaskTags()
             categoryViewModel.incrementTotalTasks(categoryID: category.id, count: 1)
             dismiss()
         }

@@ -34,6 +34,8 @@
 		74DFFE902979DB0A00782A48 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DFFE8F2979DB0A00782A48 /* TagsView.swift */; };
 		74DFFE922979DE4D00782A48 /* TagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DFFE912979DE4D00782A48 /* TagsViewModel.swift */; };
 		74DFFE942979E48900782A48 /* TagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DFFE932979E48900782A48 /* TagModel.swift */; };
+		74DFFE97297A159400782A48 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 74DFFE96297A159400782A48 /* WrappingHStack */; };
+		74DFFE99297A1B2500782A48 /* AddTaskTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DFFE98297A1B2500782A48 /* AddTaskTagsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,7 @@
 		74DFFE8F2979DB0A00782A48 /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
 		74DFFE912979DE4D00782A48 /* TagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsViewModel.swift; sourceTree = "<group>"; };
 		74DFFE932979E48900782A48 /* TagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
+		74DFFE98297A1B2500782A48 /* AddTaskTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskTagsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74DFFE97297A159400782A48 /* WrappingHStack in Frameworks */,
 				74DFFE8A2979BEAF00782A48 /* ConfettiSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,6 +138,7 @@
 				74DFFE8B2979C78C00782A48 /* TimePickerView.swift */,
 				74DFFE8D2979D51000782A48 /* StatsView.swift */,
 				74DFFE8F2979DB0A00782A48 /* TagsView.swift */,
+				74DFFE98297A1B2500782A48 /* AddTaskTagsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 			name = PQTD;
 			packageProductDependencies = (
 				74DFFE892979BEAF00782A48 /* ConfettiSwiftUI */,
+				74DFFE96297A159400782A48 /* WrappingHStack */,
 			);
 			productName = PQTD;
 			productReference = 741008352973462C0054A4D4 /* PQTD.app */;
@@ -208,6 +214,7 @@
 			mainGroup = 7410082C2973462C0054A4D4;
 			packageReferences = (
 				74DFFE882979BEAF00782A48 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+				74DFFE95297A159400782A48 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 			);
 			productRefGroup = 741008362973462C0054A4D4 /* Products */;
 			projectDirPath = "";
@@ -258,6 +265,7 @@
 				74DFFE8E2979D51000782A48 /* StatsView.swift in Sources */,
 				7410084D297348260054A4D4 /* ListRowView.swift in Sources */,
 				741008642974F4430054A4D4 /* SettingsView.swift in Sources */,
+				74DFFE99297A1B2500782A48 /* AddTaskTagsView.swift in Sources */,
 				74A8732829773BC900471FB2 /* CodableColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,6 +479,14 @@
 				kind = branch;
 			};
 		};
+		74DFFE95297A159400782A48 /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/WrappingHStack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -478,6 +494,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 74DFFE882979BEAF00782A48 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
 			productName = ConfettiSwiftUI;
+		};
+		74DFFE96297A159400782A48 /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 74DFFE95297A159400782A48 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

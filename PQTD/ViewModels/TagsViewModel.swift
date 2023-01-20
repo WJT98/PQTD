@@ -24,13 +24,29 @@ class TagsViewModel: ObservableObject {
             saveTags()
         }
     }
+    @Published var newTaskTags: Set<String> = Set<String>()
 
-
-    
     let tagsKey: String = "tags"
     
     init() {
         getTagsFromAppStorage()
+    }
+    
+    func getNewTaskTags() -> Set<String> {
+        return newTaskTags
+    }
+    
+    func insertTagToNewTask(tag: String) {
+        newTaskTags.insert(tag)
+    }
+    
+    
+    func deleteTagFromNewTask(tag: String) {
+        newTaskTags.remove(tag)
+    }
+    
+    func clearNewTaskTags(){
+        newTaskTags.removeAll()
     }
     
     func getTagsFromAppStorage() {
@@ -49,8 +65,8 @@ class TagsViewModel: ObservableObject {
         }
     }
     
-    func addTag(key: String) {
-        self.tags[key] = .unselected
+    func addTag(key: String, tagStatus: TagStatus = TagStatus.unselected) {
+        self.tags[key] = tagStatus
     }
     
     func updateTag(key: String, tagStatus: TagStatus) {
@@ -78,7 +94,7 @@ class TagsViewModel: ObservableObject {
     func renameTag(key: String, newKey: String){
         let curStatus = getTagStatus(key:key)
         deleteTag(key: key)
-        addTag(key: newKey)
+        addTag(key: newKey, tagStatus: curStatus)
     }
     
     func getIgnoreTags() -> Set<String> {

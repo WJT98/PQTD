@@ -61,11 +61,13 @@ class IPQViewModel: ObservableObject {
         items.move(fromOffsets: from, toOffset: to)
     }
     
-    func addItem(title: String, categoryID: String, priority: Int = 1, remainingTime: Int = 2) {
+    func addItem(title: String, categoryID: String, priority: Int = 1, remainingTime: Int = 2,
+                 tags: Set<String> = Set<String>()) {
         let newItem = ItemModel(title: title,
                                 remainingTime: remainingTime,
                                 categoryID: categoryID,
-                                priority: priority)
+                                priority: priority,
+                                tags: tags)
         items.append(newItem)
     }
 
@@ -134,7 +136,6 @@ class IPQViewModel: ObservableObject {
             selected = false
         }
         return result
-        
     }
         
     func saveItems() {

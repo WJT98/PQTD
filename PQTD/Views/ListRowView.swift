@@ -34,43 +34,43 @@ struct ListRowView: View {
     }
     
     var body: some View {
-        VStack{
-            HStack {
-                Image(systemName: category.icon)
-                    .foregroundColor(groupBoxColor)
-                    .font(.system(size: 20 * size))
-                    .padding(.bottom,5)
-                Text(categoryTitle)
-                    .foregroundColor(groupBoxColor)
-                    .font(.system(size: 20 * size))
-                    .padding(.bottom, 5)
-                
-                Spacer()
-                
-                if item.isCompleted {
-                    Image(systemName: "checkmark.circle")
-                        .foregroundColor(.green)
-                } else {
-                    Text(item.getFormattedTime(totalSeconds: item.remainingTime))
-                        .foregroundColor(Color.black.opacity(0.7))
-                        .font(.system(size: 15 * size))
-                        .fontWeight(.light)
+        NavigationLink (destination: EditTaskView()) {
+            VStack {
+                HStack {
+                    Image(systemName: category.icon)
+                        .foregroundColor(groupBoxColor)
+                        .font(.system(size: 20 * size))
+                        .padding(.bottom,5)
+                    Text(categoryTitle)
+                        .foregroundColor(groupBoxColor)
+                        .font(.system(size: 20 * size))
+                        .padding(.bottom, 5)
+                    
+                    Spacer()
+                    
+                    if item.isCompleted {
+                        Image(systemName: "checkmark.circle")
+                            .foregroundColor(.green)
+                    } else {
+                        Text(item.getFormattedTime(totalSeconds: item.remainingTime))
+                            .foregroundColor(Color.black.opacity(0.7))
+                            .font(.system(size: 15 * size))
+                            .fontWeight(.light)
+                    }
+                    
                 }
-                
+                .padding(.leading, 5)
+                HStack{
+                    Text(title).font(.system(size: 26 * size, weight: .bold, design: .rounded))
+                    Text(String(priority)).font(.system(size: 20 * size, weight: .bold, design: .rounded))
+                    Image(systemName: "heart.fill") .foregroundColor(Color.red)
+                    Spacer()
+                }
+                .padding(.horizontal, 5)
+                .frame(minHeight: 1, maxHeight: 30)
+                .foregroundColor(Color.black)
             }
-            .padding(.leading, 5)
-            HStack{
-                Text(title).font(.system(size: 26 * size, weight: .bold, design: .rounded))
-                Text(String(priority)).font(.system(size: 20 * size, weight: .bold, design: .rounded))
-                Image(systemName: "heart.fill") .foregroundColor(Color.red)
-                Spacer()
-            }
-            .padding(.horizontal, 5)
-            .frame(minHeight: 1, maxHeight: 30)
-            .foregroundColor(Color.black)
         }
-
-//        .background(Color.white)
     }
 }
 

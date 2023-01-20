@@ -19,12 +19,17 @@ struct BottomTabView: View {
                 }
             TimerView()
                 .tabItem {
-                    Label("Timer", systemImage: "timer")
+                    Label("Lists", systemImage: "timer")
+                }
+            StatsView()
+                .tabItem {
+                    Label("Stats", systemImage: "chart.bar.xaxis")
                 }
             SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "list.bullet")
                 }
+
         }
     }
 }

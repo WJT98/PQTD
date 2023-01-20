@@ -19,10 +19,10 @@ class ItemModel: Identifiable, Codable, Hashable {
     var categoryID: String
     let priority: Int
     let dueDate: Date?
-    var tags: Set<String> = Set<String>()
+    var tags: Set<String>
     
     init(id: String = UUID().uuidString, title: String,
-         isCompleted: Bool = false, remainingTime: Int = 300, elapsedTime: Int = 0, categoryID: String = "heart.fill", priority: Int = 1, dueDate: Date? = nil, tags: [String] = []) {
+         isCompleted: Bool = false, remainingTime: Int = 300, elapsedTime: Int = 0, categoryID: String = "heart.fill", priority: Int = 1, dueDate: Date? = nil, tags: Set<String> = Set<String>()) {
         self.id = id
         self.title = title
         self.isCompleted = isCompleted
@@ -31,9 +31,7 @@ class ItemModel: Identifiable, Codable, Hashable {
         self.categoryID = categoryID
         self.priority = priority
         self.dueDate = dueDate
-        for tag in tags {
-            self.tags.insert(tag)
-        }
+        self.tags = tags
     }
     
     func updateCompletion() -> Void {
