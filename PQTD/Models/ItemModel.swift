@@ -36,11 +36,10 @@ class ItemModel: Identifiable, Codable, Hashable {
     
     func updateCompletion() -> Void {
         self.isCompleted = !self.isCompleted
-        //return ItemModel(title: "sdf", isCompleted: !self.isCompleted)
     }
     
     func decrementRemainingTime(time: Int) -> Void {
-        if time < 0 || remainingTime > 1 {
+        if time < 0 || remainingTime-time > 1 {
             self.remainingTime -= time
             self.isCompleted = false
         } else {

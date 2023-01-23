@@ -21,9 +21,10 @@ struct TimerView: View {
     @State var curItemID: String = "1"
     @State var nextItemID: String = "1"
     @State var counter: Int = 0
+    @State var elapsedTime: Int = 0
     @State var timerRunning: Bool = false
     @State var confettiOn: Int = 0
-    @State var remainingTime: Int = 0
+    @State var originalRemainingTime: Int = 0
 
     
     let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
@@ -69,15 +70,48 @@ struct TimerView: View {
                                     .foregroundColor(Color.black.opacity(0.7))
                                     .padding(.horizontal, 15)
                                     .padding(.top, 10)
-                                Text("Duration")
+                                Text("Remaining")
+                                    .font(.system(size:14))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color.black)
+                                
+                            }
+                            Spacer()
+                            VStack{
+                                Text(listViewModel.getItem(itemID: curItemID).getFormattedTime(totalSeconds: elapsedTime))
+                                    .font(.system(size:24))
+                                    .foregroundColor(Color.black.opacity(0.7))
+                                    .padding(.horizontal, 15)
+                                    .padding(.top, 10)
+                                Text("Elapsed")
                                     .font(.system(size:14))
                                     .fontWeight(.bold)
                                     .foregroundColor(Color.black)
                             }
-                            Spacer()
+                            
                         }
+                        
                         Spacer()
                         HStack {
+                            
+                            Image(systemName: "checkmark.circle.fill")
+                                .scaleEffect(2)
+                                .onTapGesture {
+                                    self.confettiOn += 1
+                                    if self.timerRunning {
+                                        timer.upstream.connect().cancel()
+                                        self.timerRunning = false
+                                    }
+                                    self.counter = self.originalRemainingTime
+                                    listViewModel.decrementItemRemainingTime(item: listViewModel.getItem(itemID: curItemID), time: listViewModel.getItem(itemID: curItemID).remainingTime)
+                                    categoryViewModel.incrementCompletedTasks(categoryID: listViewModel.getItem(itemID: self.curItemID).categoryID, count: -1)
+                                }
+                                .foregroundColor(Color.green)
+                                .padding(.horizontal, 30)
+                                .padding(.bottom, 30)
+                                .scaleEffect(1.2)
+                          
+                            
                             Spacer()
                             Image(systemName: "arrow.counterclockwise.circle.fill")
                                 .scaleEffect(2)
@@ -85,18 +119,14 @@ struct TimerView: View {
                                     self.timerRunning = false
                                     listViewModel.getItem(itemID: curItemID).decrementRemainingTime(time: -counter)
                                     listViewModel.getItem(itemID: curItemID).incrementElapsedTime(time: -counter)
-                                    if self.counter ==  self.remainingTime {
+                                    if self.counter ==  self.originalRemainingTime {
                                         categoryViewModel.incrementCompletedTasks(categoryID: listViewModel.getItem(itemID: self.curItemID).categoryID, count: -1)
                                     }
                                     self.counter = 0
-                                    
                                 }
                                 .padding(.horizontal, 30)
                                 .padding(.bottom, 30)
                                 .scaleEffect(1.2)
-
-
-                            
                         }
                     }
                 }
@@ -104,8 +134,36 @@ struct TimerView: View {
                     .foregroundColor(Color.blue)
                     .padding(.horizontal, 20)
                     .cornerRadius(10)
-
                 
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        listViewModel.decrementItemRemainingTime(item: listViewModel.getItem(itemID: curItemID), time: 60)
+                        if listViewModel.getItem(itemID: curItemID).remainingTime == 0{
+                            self.counter = self.originalRemainingTime
+                        }
+                    }) {
+                        Text("-1 min")
+                    }
+                    .buttonStyle(.bordered)
+                    .padding(.leading, 10)
+                    Button(action: {
+                        listViewModel.decrementItemRemainingTime(item: listViewModel.getItem(itemID: curItemID), time: -60)
+                    }) {
+                        Text("+1 min")
+                    }
+                    .buttonStyle(.bordered)
+                    .padding(.leading, 10)
+                    Button(action: {
+                        listViewModel.decrementItemRemainingTime(item: listViewModel.getItem(itemID: curItemID), time: -300)
+                    }) {
+                        Text("+5 min")
+                    }
+                    .buttonStyle(.bordered)
+                    .padding(.trailing)
+                }
+
+          
                 Text("Current Task")
                     .font(.title)
                     .fontWeight(.bold)
@@ -130,14 +188,15 @@ struct TimerView: View {
             }
             .onAppear(perform: {
                 self.curItemID = listViewModel.getFirstItem().id
-                self.remainingTime = listViewModel.getItem(itemID:curItemID).remainingTime
+                self.originalRemainingTime = listViewModel.getItem(itemID:curItemID).remainingTime
                // self.nextItemID = 0
             })
             .onReceive(timer, perform: { value in
-                if self.counter ==  self.remainingTime {
+                if self.counter ==  self.originalRemainingTime {
+                    self.counter -= 1
                     timer.upstream.connect().cancel()
                     self.timerRunning = false
-                    self.confettiOn = 1
+                    self.confettiOn += 1
                     categoryViewModel.incrementCompletedTasks(categoryID: listViewModel.getItem(itemID: self.curItemID).categoryID, count: 1)
                 }
                 if timerRunning {
@@ -148,7 +207,7 @@ struct TimerView: View {
             })
             .navigationTitle(Text("Timer"))
             .background(Color.black.opacity(0.03))
-            .confettiCannon(counter: $confettiOn, num:1, confettiSize: 15, repetitions: 100, repetitionInterval: 0.1)
+            .confettiCannon(counter: $confettiOn, num:1, confettiSize: 15, repetitions: 30, repetitionInterval: 0.1)
 
         }
     

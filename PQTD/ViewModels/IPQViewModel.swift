@@ -91,12 +91,15 @@ class IPQViewModel: ObservableObject {
         if let index = items.firstIndex(where: { $0.id == item.id}) {
             items[index].decrementRemainingTime(time: time)
         }
+        objectWillChange.send()
     }
     
     func incrementItemElapsedTime(item: ItemModel, time: Int) {
         if let index = items.firstIndex(where: { $0.id == item.id}) {
             items[index].incrementElapsedTime(time: time)
         }
+        objectWillChange.send()
+
     }
     
     func getFirstItem() -> ItemModel {

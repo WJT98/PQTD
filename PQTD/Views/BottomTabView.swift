@@ -17,7 +17,7 @@ struct BottomTabView: View {
                 .tabItem {
                     Label("Todo List", systemImage: "note")
                 }
-            TimerView()
+            Text("Hello World")
                 .tabItem {
                     Label("Lists", systemImage: "timer")
                 }
