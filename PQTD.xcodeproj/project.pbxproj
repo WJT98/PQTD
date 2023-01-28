@@ -14,7 +14,6 @@
 		7410084F29734A780054A4D4 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410084E29734A780054A4D4 /* AddTaskView.swift */; };
 		7410085229734F840054A4D4 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410085129734F840054A4D4 /* ItemModel.swift */; };
 		7410085629735D990054A4D4 /* IPQViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410085529735D990054A4D4 /* IPQViewModel.swift */; };
-		7410085829735E250054A4D4 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410085729735E250054A4D4 /* ListView.swift */; };
 		7410085C2974E0680054A4D4 /* NoItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410085B2974E0680054A4D4 /* NoItemsView.swift */; };
 		7410085E2974E9E50054A4D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7410085D2974E9E50054A4D4 /* LaunchScreen.storyboard */; };
 		741008602974ED2F0054A4D4 /* BottomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410085F2974ED2F0054A4D4 /* BottomTabView.swift */; };
@@ -23,6 +22,7 @@
 		741008662974F4860054A4D4 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741008652974F4860054A4D4 /* AddCategoryView.swift */; };
 		741008682974F4A30054A4D4 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741008672974F4A30054A4D4 /* CategoryModel.swift */; };
 		7410086A2974F6890054A4D4 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741008692974F6890054A4D4 /* CategoryViewModel.swift */; };
+		744AB8962984C40D00C5D2A1 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744AB8952984C40D00C5D2A1 /* ListView.swift */; };
 		74A8732829773BC900471FB2 /* CodableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A8732729773BC900471FB2 /* CodableColor.swift */; };
 		74A8732A297749A200471FB2 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A87329297749A200471FB2 /* EditTaskView.swift */; };
 		74A8732C29777E1E00471FB2 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A8732B29777E1E00471FB2 /* CategoriesView.swift */; };
@@ -47,7 +47,6 @@
 		7410084E29734A780054A4D4 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		7410085129734F840054A4D4 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		7410085529735D990054A4D4 /* IPQViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPQViewModel.swift; sourceTree = "<group>"; };
-		7410085729735E250054A4D4 /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListView.swift; path = ../../../../.Trash/ListView.swift; sourceTree = "<group>"; };
 		7410085B2974E0680054A4D4 /* NoItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoItemsView.swift; sourceTree = "<group>"; };
 		7410085D2974E9E50054A4D4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7410085F2974ED2F0054A4D4 /* BottomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabView.swift; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 		741008652974F4860054A4D4 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		741008672974F4A30054A4D4 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		741008692974F6890054A4D4 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		744AB8952984C40D00C5D2A1 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		74A8732729773BC900471FB2 /* CodableColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableColor.swift; sourceTree = "<group>"; };
 		74A87329297749A200471FB2 /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
 		74A8732B29777E1E00471FB2 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
@@ -122,7 +122,6 @@
 		74100847297346C00054A4D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7410085729735E250054A4D4 /* ListView.swift */,
 				7410084C297348260054A4D4 /* ListRowView.swift */,
 				74A8732F297868BF00471FB2 /* FloatingButton.swift */,
 				7410084E29734A780054A4D4 /* AddTaskView.swift */,
@@ -139,6 +138,7 @@
 				74DFFE8D2979D51000782A48 /* StatsView.swift */,
 				74DFFE8F2979DB0A00782A48 /* TagsView.swift */,
 				74DFFE98297A1B2500782A48 /* AddTaskTagsView.swift */,
+				744AB8952984C40D00C5D2A1 /* ListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -250,12 +250,12 @@
 				74DFFE8C2979C78C00782A48 /* TimePickerView.swift in Sources */,
 				741008622974F25A0054A4D4 /* TimerView.swift in Sources */,
 				74A87330297868BF00471FB2 /* FloatingButton.swift in Sources */,
+				744AB8962984C40D00C5D2A1 /* ListView.swift in Sources */,
 				74A8732E297790F600471FB2 /* CategoryCardView.swift in Sources */,
 				7410085629735D990054A4D4 /* IPQViewModel.swift in Sources */,
 				74A8732C29777E1E00471FB2 /* CategoriesView.swift in Sources */,
 				7410085229734F840054A4D4 /* ItemModel.swift in Sources */,
 				74DFFE942979E48900782A48 /* TagModel.swift in Sources */,
-				7410085829735E250054A4D4 /* ListView.swift in Sources */,
 				7410084F29734A780054A4D4 /* AddTaskView.swift in Sources */,
 				741008662974F4860054A4D4 /* AddCategoryView.swift in Sources */,
 				741008392973462C0054A4D4 /* PQTDApp.swift in Sources */,

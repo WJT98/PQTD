@@ -30,8 +30,6 @@ struct NoItemsView: View {
                             .frame(maxWidth: . infinity)
                             .background(animate ? Color.blue : SecondaryAccentColor)
                             .cornerRadius(10)
-                           
-                        
                 })
                 .padding(.horizontal, 30)
                 .shadow (

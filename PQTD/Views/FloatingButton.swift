@@ -22,7 +22,7 @@ struct FloatingButton: View {
                         .foregroundColor(.white)
                 }
                 .frame(width: 60, height: 60)
-                .background(Color.red)
+                .background(Color.accentColor)
                 .cornerRadius(30)
                 .shadow(radius: 10)
                 .offset(x: -25, y: 10)

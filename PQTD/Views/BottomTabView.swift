@@ -13,6 +13,7 @@ struct BottomTabView: View {
     
     var body: some View {
         TabView {
+            
             ListView()
                 .tabItem {
                     Label("Todo List", systemImage: "note")
