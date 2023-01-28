@@ -16,16 +16,20 @@ struct FloatingButton: View {
             Spacer()
             HStack {
                 Spacer()
-                Button(action: action) {
-                    Image(systemName: icon)
-                        .font(.system(size: 25))
-                        .foregroundColor(.white)
+                NavigationLink {
+                    TimerView()
+                } label: {
+                    Button(action: action) {
+                        Image(systemName: icon)
+                            .font(.system(size: 25))
+                            .foregroundColor(.white)
+                    }
+                    .frame(width: 60, height: 60)
+                    .background(Color.accentColor)
+                    .cornerRadius(30)
+                    .shadow(radius: 10)
+                    .offset(x: -25, y: 10)
                 }
-                .frame(width: 60, height: 60)
-                .background(Color.accentColor)
-                .cornerRadius(30)
-                .shadow(radius: 10)
-                .offset(x: -25, y: 10)
             }
         }
     }

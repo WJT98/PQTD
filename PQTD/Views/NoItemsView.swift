@@ -11,6 +11,8 @@ struct NoItemsView: View {
     
     @State var animate: Bool = false
     let SecondaryAccentColor = Color("SecondaryAccentColor")
+    @State private var showAddTask: Bool = false
+
 
     var body: some View {
         ScrollView {
@@ -20,16 +22,16 @@ struct NoItemsView: View {
                     .fontWeight(.semibold)
                 Text("Click the add button to start. Make sure your tasks are short and manageable.")
                     .padding(.bottom, 20)
-                NavigationLink (
-                    destination: AddTaskView(),
-                    label: {
-                        Text("Add Something 🥳")
-                            .foregroundColor(.white)
-                            .font(.headline)
-                            .frame(height: 55)
-                            .frame(maxWidth: . infinity)
-                            .background(animate ? Color.blue : SecondaryAccentColor)
-                            .cornerRadius(10)
+                Button(action: {
+                    showAddTask.toggle()
+                }, label: {
+                    Text("Add Something 🥳")
+                        .foregroundColor(.white)
+                        .font(.headline)
+                        .frame(height: 55)
+                        .frame(maxWidth: . infinity)
+                        .background(animate ? Color.blue : SecondaryAccentColor)
+                        .cornerRadius(10)
                 })
                 .padding(.horizontal, 30)
                 .shadow (
@@ -38,9 +40,11 @@ struct NoItemsView: View {
                     x: 0,
                     y: 0
                 )
-
-                
-
+            }
+            .sheet(isPresented: $showAddTask) {
+                NavigationStack{
+                    AddTaskView()
+                }
             }
             .frame(maxWidth: 400)
             .padding(40)

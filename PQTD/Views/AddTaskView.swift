@@ -100,6 +100,7 @@ struct AddTaskView: View {
             }
             
         }
+        
         .navigationBarTitle(Text("New Task"))
         .navigationBarTitleDisplayMode(.inline)
         .alert(isPresented: $showAlert, content: getAlert)

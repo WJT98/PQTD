@@ -12,6 +12,7 @@ struct ListView: View {
     @EnvironmentObject var listViewModel: IPQViewModel
     @EnvironmentObject var categoryViewModel: CategoryViewModel
     @State private var showTags: Bool = false
+    @State private var showAddTask: Bool = false
 
     var body: some View {
         NavigationStack{
@@ -34,7 +35,8 @@ struct ListView: View {
                             .onMove(perform: listViewModel.moveItem)
                         }
                         .id(UUID())
-                        .listStyle(PlainListStyle())
+                        
+//                        .listStyle(PlainListStyle())
                         
                         Spacer()
                         DisclosureGroup(
@@ -50,19 +52,24 @@ struct ListView: View {
                             })
                         .padding(.horizontal)
                     }
-                }
-                NavigationLink {
-                    TimerView()
-                } label: {
                     FloatingButton(action: {}, icon: "play.fill")
                 }
-                .offset(y:-50)
+            }
+            .sheet(isPresented: $showAddTask) {
+                NavigationStack{
+                    AddTaskView()
+                }
             }
             .navigationTitle("Todo List")
             .navigationBarItems(
                 leading: EditButton(),
                 trailing:
-                    NavigationLink("Add", destination: AddTaskView())
+                    Button(action: {
+                        showAddTask.toggle()
+                    }, label: {
+                        Text("Add")
+                    })
+                                   
                 )
         }
     }
